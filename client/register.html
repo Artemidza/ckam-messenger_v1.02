@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - CKAM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <div class="center-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <a href="index.html" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <h2>Регистрация в CKAM</h2>
+                </div>
+                
+                <form id="registerForm" class="auth-form">
+                    <div class="input-group">
+                        <label for="displayName">
+                            <i class="fas fa-id-card"></i> Ваше имя
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="displayName" name="displayName" required 
+                                   placeholder="Как вас зовут?">
+                            <div class="input-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="username">
+                            <i class="fas fa-at"></i> Юзернейм
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="username" name="username" required 
+                                   placeholder="Уникальное имя пользователя">
+                            <div class="input-icon">
+                                <i class="fas fa-at"></i>
+                            </div>
+                            <div class="input-hint">По этому имени вас найдут друзья</div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i> Пароль
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" name="password" minlength="6" required 
+                                   placeholder="Не менее 6 символов">
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="confirmPassword">
+                            <i class="fas fa-lock"></i> Подтвердите пароль
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required 
+                                   placeholder="Повторите пароль">
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-user-plus"></i> Создать аккаунт
+                    </button>
+                    
+                    <div class="auth-links">
+                        <p>Уже есть аккаунт? <a href="login.html">Войдите</a></p>
+                        <a href="index.html" class="home-link">
+                            <i class="fas fa-home"></i> Вернуться на главную
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast"></div>
+    <script src="app.js"></script>
+</body>
+</html>

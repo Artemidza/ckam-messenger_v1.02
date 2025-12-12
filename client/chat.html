@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат - CKAM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-theme" data-theme="dark">
+    <div class="chat-container">
+        <!-- Боковая панель -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-profile">
+                    <div class="avatar" id="userAvatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <span class="display-name" id="currentUserName">Загрузка...</span>
+                        <span class="username" id="currentUsername">@user</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" id="newChatBtn" title="Новый чат">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="chats-list">
+                <div class="list-header">
+                    <h3>Чаты</h3>
+                    <button class="btn-icon" id="searchBtn" title="Поиск пользователей">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="chats-container" id="chatsContainer">
+                    <div class="no-chats" id="noChats">
+                        <i class="fas fa-comments"></i>
+                        <p>Чатов пока нет</p>
+                        <p class="hint">Начните новый чат, чтобы общаться</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <button class="btn-icon" id="settingsBtn" title="Настройки">
+                    <i class="fas fa-cog"></i> Настройки
+                </button>
+                <button class="btn-icon" id="logoutBtn" title="Выйти">
+                    <i class="fas fa-sign-out-alt"></i> Выйти
+                </button>
+            </div>
+        </div>
+        
+        <!-- Основная область чата -->
+        <div class="chat-main" id="chatMain">
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <div class="welcome-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <h1>Добро пожаловать в CKAM</h1>
+                    <p>Выберите чат из списка или начните новый диалог</p>
+                    <button class="btn btn-primary" id="startFirstChat">
+                        <i class="fas fa-plus"></i> Начать первый чат
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Активный чат -->
+            <div class="active-chat" id="activeChat" style="display: none;">
+                <div class="chat-header">
+                    <div class="chat-partner" id="currentChatPartner">
+                        <div class="chat-avatar" id="partnerAvatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="partner-info">
+                            <div class="partner-name" id="partnerName">...</div>
+                            <div class="partner-status" id="partnerStatus">был(а) недавно</div>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="btn-icon" id="infoBtn" title="Информация о чате">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Сообщения загружаются здесь -->
+                </div>
+                
+                <div class="chat-input-container">
+                    <button class="btn-icon" id="attachBtn" title="Прикрепить файл">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <input type="text" id="messageInput" placeholder="Введите сообщение...">
+                    <button class="btn-send" id="sendBtn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно нового чата -->
+    <div class="modal" id="newChatModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-plus"></i> Новый чат</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-box">
+                    <input type="text" id="searchUsersInput" placeholder="Начните вводить имя или юзернейм...">
+                    <button class="btn-icon search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="search-results" id="searchResults">
+                    <!-- Результаты поиска -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно настроек -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-cog"></i> Настройки профиля</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-content">
+                    <!-- Аватар -->
+                    <div class="avatar-section">
+                        <div class="avatar-preview">
+                            <div class="avatar-large" id="avatarPreview">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <button class="btn btn-secondary" id="changeAvatarBtn">
+                                <i class="fas fa-camera"></i> Сменить аватар
+                            </button>
+                            <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+                    
+                    <!-- Основная информация -->
+                    <form id="settingsForm" class="settings-form">
+                        <div class="form-section">
+                            <h3><i class="fas fa-user-edit"></i> Основная информация</h3>
+                            
+                            <div class="input-group">
+                                <label for="settingsDisplayName">Отображаемое имя</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="settingsDisplayName" required 
+                                           placeholder="Введите ваше имя">
+                                    <div class="input-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="settingsUsername">Юзернейм</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="settingsUsername" required 
+                                           placeholder="Уникальное имя пользователя">
+                                    <div class="input-icon">
+                                        <i class="fas fa-at"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Тема -->
+                        <div class="form-section">
+                            <h3><i class="fas fa-palette"></i> Цветовая тема</h3>
+                            <div class="theme-palette" id="themePalette">
+                                <div class="theme-color" data-theme="dark" title="Темная">
+                                    <div class="color-preview dark"></div>
+                                    <span>Темная</span>
+                                </div>
+                                <div class="theme-color" data-theme="red" title="Красная">
+                                    <div class="color-preview red"></div>
+                                    <span>Красная</span>
+                                </div>
+                                <div class="theme-color" data-theme="blue" title="Синяя">
+                                    <div class="color-preview blue"></div>
+                                    <span>Синяя</span>
+                                </div>
+                                <div class="theme-color" data-theme="green" title="Зеленая">
+                                    <div class="color-preview green"></div>
+                                    <span>Зеленая</span>
+                                </div>
+                                <div class="theme-color" data-theme="purple" title="Фиолетовая">
+                                    <div class="color-preview purple"></div>
+                                    <span>Фиолетовая</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Смена пароля -->
+                        <div class="form-section">
+                            <h3><i class="fas fa-key"></i> Безопасность</h3>
+                            
+                            <div class="input-group">
+                                <label for="currentPassword">Текущий пароль</label>
+                                <div class="input-wrapper">
+                                    <input type="password" id="currentPassword" 
+                                           placeholder="Введите текущий пароль">
+                                    <div class="input-icon">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="newPassword">Новый пароль</label>
+                                <div class="input-wrapper">
+                                    <input type="password" id="newPassword" 
+                                           placeholder="Введите новый пароль">
+                                    <div class="input-icon">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-save"></i> Сохранить изменения
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Всплывающее уведомление -->
+    <div class="toast" id="toast"></div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

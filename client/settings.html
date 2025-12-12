@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки - RedMessenger</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <div class="container">
+        <div class="settings-container">
+            <div class="settings-header">
+                <a href="chat.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Назад
+                </a>
+                <h1><i class="fas fa-cog"></i> Настройки</h1>
+            </div>
+            
+            <div class="settings-card">
+                <h2>Профиль</h2>
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="settingsDisplayName">
+                            <i class="fas fa-id-card"></i> Отображаемое имя
+                        </label>
+                        <input type="text" id="settingsDisplayName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="settingsUsername">
+                            <i class="fas fa-at"></i> Юзернейм
+                        </label>
+                        <input type="text" id="settingsUsername" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="currentPassword">
+                            <i class="fas fa-lock"></i> Текущий пароль
+                        </label>
+                        <input type="password" id="currentPassword">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newPassword">
+                            <i class="fas fa-lock"></i> Новый пароль
+                        </label>
+                        <input type="password" id="newPassword">
+                    </div>
+                </form>
+            </div>
+            
+            <div class="settings-card">
+                <h2>Внешний вид</h2>
+                <div class="theme-options">
+                    <button class="theme-option dark-theme-option active" data-theme="dark">
+                        <div class="theme-preview dark"></div>
+                        <span>Темная</span>
+                    </button>
+                    
+                    <button class="theme-option light-theme-option" data-theme="light">
+                        <div class="theme-preview light"></div>
+                        <span>Светлая</span>
+                    </button>
+                    
+                    <button class="theme-option red-theme-option" data-theme="red">
+                        <div class="theme-preview red"></div>
+                        <span>Красная</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="settings-card">
+                <h2>Аккаунт</h2>
+                <button class="btn btn-danger" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Выйти
+                </button>
+                
+                <button class="btn btn-secondary" id="deleteAccountBtn">
+                    <i class="fas fa-trash"></i> Удалить аккаунт
+                </button>
+            </div>
+            
+            <button class="btn btn-primary" id="saveSettings">
+                <i class="fas fa-save"></i> Сохранить изменения
+            </button>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
