@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "58388532-1b5f-4056-b7b9-4601027ed9cc",
+      "displayName": "MrVenera123",
+      "username": "mrvenera",
+      "password": "$2a$10$Ddss9uBiJKsbRUfE5FAXb.wEt95JMMqDPkydPK67v3Mcu8OEZcm1y",
+      "createdAt": "2025-12-12T07:47:13.583Z",
+      "theme": "dark",
+      "updatedAt": "2025-12-12T07:47:45.948Z"
+    },
+    {
+      "id": "9ed0b43b-f4d3-42a5-aead-6d93e65c7e47",
+      "displayName": "Timur Timurovich",
+      "username": "timur_timurovich",
+      "password": "$2a$10$fx7B6elJMTSHDv90p9cwO.XzP2BAQhyivs5chHrmvu6bOHzlsmuzW",
+      "createdAt": "2025-12-12T07:49:51.782Z",
+      "theme": "dark"
+    },
+    {
+      "id": "7542ea9a-667b-4331-9946-249a87fdb291",
+      "displayName": "гамума",
+      "username": "шаурма",
+      "password": "$2a$10$4ZE7eC3W57Doz3aLyA51RegFOxsqT9af1sEjy9qFv//JD/6u/MXg6",
+      "avatar": null,
+      "theme": "dark",
+      "createdAt": "2025-12-12T08:18:32.480Z",
+      "updatedAt": "2025-12-12T08:37:01.341Z"
+    }
+  ]
+}
